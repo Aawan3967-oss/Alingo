@@ -7,6 +7,49 @@ const services = [
     { name: 'TRAVEL', icon: '✈️' }
 ];
 
+const firebaseConfig = {
+    apiKey: "AIzaSyCwToYZJlnhnpYUt0NpspoRh4HczFgy1I4",
+    authDomain: "alingo-d59de.firebaseapp.com",
+    projectId: "alingo-d59de",
+    storageBucket: "alingo-d59de.firebasestorage.app",
+    messagingSenderId: "854468704271",
+    appId: "1:854468704271:web:6f389d7c069730194b8b7a"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// بکنگ کنفرم کرنے کا فنکشن (ٹیکسی پیج کے لیے)
+async function confirmBooking() {
+    const pickup = document.querySelector('input[placeholder="Pickup Location"]').value;
+    const dropoff = document.querySelector('input[placeholder="Drop-off Destination"]').value;
+    const rideType = document.querySelector('.ride-option.active p').innerText;
+
+    if (!pickup || !dropoff) {
+        alert("Please enter both locations!");
+        return;
+    }
+
+    try {
+        await db.collection("orders").add({
+            service: "Taxi",
+            pickup: pickup,
+            dropoff: dropoff,
+            rideType: rideType,
+            status: "Pending",
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        alert("Your Alingo ride request has been sent! Check status in a moment.");
+    } catch (error) {
+        console.error("Error adding document: ", error);
+        alert("Something went wrong. Please try again.");
+    }
+}
+
+
+
+
 function drawNodes() {
     const container = document.getElementById('nodes-container');
     if(!container) return;
