@@ -6,93 +6,79 @@
     <title>Alingo - All In One Go</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root { --primary: #004a99; --secondary: #1eb53a; }
-        body { background: #f8fafc; margin: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; }
+        :root { --alingo-blue: #004a99; --alingo-green: #1eb53a; }
+        body { background: #f8fafc; font-family: 'Segoe UI', sans-serif; overflow: hidden; margin: 0; }
 
-        /* 1. Splash Screen */
+        /* Splash Screen */
         #splash {
-            position: fixed; inset: 0; background: white; z-index: 5000;
+            position: fixed; inset: 0; background: white; z-index: 9999;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 0.8s ease;
         }
 
-        /* 2. Welcome Note (English) */
-        .welcome-header { margin-top: 40px; text-align: center; }
-        .welcome-header h1 { color: var(--primary); font-size: 28px; font-weight: 800; letter-spacing: -1px; }
-
-        /* 3. The Grand Disk Design */
-        .main-container { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 20px 0; }
-        
-        .disk-system {
+        /* Main Disk Container */
+        .disk-container {
             position: relative; width: 90vw; height: 90vw; max-width: 400px; max-height: 400px;
             display: flex; justify-content: center; align-items: center;
         }
 
-        /* Outer Disk with beautiful border */
+        /* Outer Disk - Full Screen feel */
         .outer-disk {
-            position: absolute; width: 100%; height: 100%; border-radius: 50%;
-            background: linear-gradient(145deg, var(--secondary), var(--primary));
-            box-shadow: 0 20px 50px rgba(0,74,153,0.4);
-            border: 4px solid rgba(255,255,255,0.3);
+            position: absolute; width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--alingo-blue), var(--alingo-green));
+            border-radius: 50%; border: 10px solid white;
+            box-shadow: 0 20px 50px rgba(0,74,153,0.3);
         }
 
-        /* Inner Disk (70% Size) */
+        /* Inner Disk - 70% of Outer */
         .inner-disk {
-            position: absolute; width: 70%; height: 70%; background: white;
-            border-radius: 50%; z-index: 10; display: flex; justify-content: center; 
-            align-items: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-            border: 2px solid #e2e8f0;
+            position: absolute; width: 70%; height: 70%;
+            background: white; border-radius: 50%; z-index: 10;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
         }
 
-        .inner-disk img { width: 80%; height: 80%; object-fit: contain; }
-
-        /* Buttons (Nodes) - Strictly inside the disk ring */
-        .service-node {
-            position: absolute; width: 60px; height: 60px; background: white;
+        /* Buttons on Disk Edge */
+        .service-btn {
+            position: absolute; width: 65px; height: 65px; background: white;
             border-radius: 50%; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-            cursor: pointer; z-index: 20; border: 2px solid var(--primary);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            justify-content: center; align-items: center; font-size: 10px;
+            font-weight: bold; color: var(--alingo-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 2px solid #e2e8f0;
+            cursor: pointer; transition: all 0.3s ease; z-index: 20;
         }
-        .service-node:active { transform: scale(0.9); }
-        .service-node span { font-size: 20px; }
-        .service-node label { font-size: 9px; font-weight: bold; color: var(--primary); margin-top: 2px; }
+        .service-btn:active { transform: scale(0.9); }
     </style>
 </head>
 <body>
 
     <div id="splash">
-        <img src="/public/LOGO.JPG" class="w-32 animate-bounce">
-        <h2 class="text-2xl font-bold mt-4 tracking-widest text-[#004a99]">ALINGGO</h2>
+        <img src="/public/LOGO.JPG" class="w-32 animate-bounce" onerror="this.src='https://via.placeholder.com/150?text=Alingo'">
+        <h1 class="text-3xl font-bold text-[#004a99] mt-4 italic">Alingo</h1>
     </div>
 
-    <div class="main-container">
-        <div class="welcome-header">
-            <h1 class="animate__animated animate__fadeInDown">Welcome to Alingo</h1>
-            <p class="text-gray-500 text-sm">Everything you need, in one go!</p>
+    <div id="main-app" class="hidden h-screen flex flex-col items-center justify-start pt-10">
+        <div class="text-center mb-8 px-6">
+            <h2 class="text-3xl font-black text-[#004a99] uppercase tracking-tighter">Welcome to Alingo</h2>
+            <p class="text-gray-500 font-medium">Your Daily Life Partner</p>
         </div>
 
-        <div class="disk-system" id="diskContainer">
+        <div class="disk-container">
             <div class="outer-disk"></div>
             <div class="inner-disk">
-                <img src="/public/LOGO.JPG" alt="Alingo Logo">
+                <img src="/public/LOGO.JPG" class="w-4/5 h-4/5 object-contain" alt="Logo">
             </div>
-            </div>
-
-        <div class="mb-8">
-            <p class="text-xs text-gray-400">© 2026 Alingo Super App</p>
+            <div id="button-wrapper"></div>
         </div>
     </div>
 
-    <script src="/public/script.js"></script>
+    <script src="/script.js"></script>
     <script>
-        // Splash logic
         window.addEventListener('load', () => {
             setTimeout(() => {
-                const s = document.getElementById('splash');
-                s.style.opacity = '0';
-                setTimeout(() => s.remove(), 800);
-            }, 2500);
+                document.getElementById('splash').style.display = 'none';
+                document.getElementById('main-app').classList.remove('hidden');
+                if(window.renderButtons) window.renderButtons();
+            }, 3000);
         });
     </script>
 </body>
