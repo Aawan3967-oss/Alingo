@@ -1,43 +1,38 @@
-// Firebase Configuration (یہاں اپنی کیز ڈالیں)
-const firebaseConfig = {
-    apiKey: "AIzaSyCbawvd2xE6DL4cMJ1w1Et2AuKInYL5kWs",
-    authDomain: "alingo-app.firebaseapp.com",
-    projectId: "alingo-app",
-    storageBucket: "alingo-app.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "your-app-id"
-};
+// سروسز کا ڈیٹا جو گول ڈسک پر نظر آئے گا
+const alingoServices = [
+    { id: 'food', name: 'کھانا', icon: '🍔', active: true },
+    { id: 'grocery', name: 'گروسری', icon: '🛒', active: true },
+    { id: 'taxi', name: 'ٹیکسی', icon: '🚕', active: true },
+    { id: 'tickets', name: 'ٹکٹنگ', icon: '🎟️', active: true },
+    { id: 'shopping', name: 'شاپنگ', icon: '🛍️', active: true },
+    { id: 'travel', name: 'ٹریول', icon: '✈️', active: true }
+];
 
-// Initialize Firebase
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-}
-const db = firebase.firestore();
-
-// کسی بھی سروس پر کلک کرنے کا فنکشن
-async function openService(serviceName) {
-    console.log(serviceName + " کھولی جا رہی ہے...");
+// جب کسی سروس پر کلک ہو تو کیا ہو؟
+function handleServiceClick(serviceId) {
+    const displayArea = document.getElementById('display-area'); // انڈیکس فائل میں یہ آئی ڈی ہونی چاہیے
     
-    // اگر کھانا یا گروسری ہے تو ڈیٹا بیس سے لسٹ لائیں
-    if(serviceName === 'کھانا' || serviceName === 'گروسری') {
-        alert(serviceName + " کی لسٹ لوڈ ہو رہی ہے، براہ کرم انتظار کریں...");
-        // یہاں ہم مستقبل میں ایک نیا پیج یا ماڈل دکھائیں گے
+    if (serviceId === 'food') {
+        loadFoodMenu();
+    } else if (serviceId === 'taxi') {
+        loadTaxiBooking();
     } else {
-        alert(serviceName + " سروس جلد شروع کی جائے گی۔");
+        alert(serviceId + " سروس جلد لائیو ہوگی!");
     }
 }
 
-// آرڈر بک کرنے کا فنکشن
-async function placeOrder(item, price) {
-    try {
-        await db.collection('orders').add({
-            item: item,
-            price: price,
-            time: firebase.firestore.FieldValue.serverTimestamp(),
-            status: 'Pending'
-        });
-        alert("آپ کا آرڈر موصول ہو گیا ہے!");
-    } catch (error) {
-        console.error("Error adding document: ", error);
-    }
+// کھانا لوڈ کرنے کا فنکشن
+function loadFoodMenu() {
+    const area = document.getElementById('display-area');
+    area.innerHTML = `
+        <div class="animate__animated animate__fadeInUp p-4 bg-white rounded-3xl shadow-lg">
+            <h3 class="text-xl font-bold mb-4 text-[#004a99]">تازہ کھانا آرڈر کریں</h3>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <span>چکن بریانی (فل)</span>
+                    <button onclick="confirmOrder('Biryani', 350)" class="bg-[#1eb53a] text-white px-3 py-1 rounded-lg">Rs. 350</button>
+                </div>
+            </div>
+        </div>
+    `;
 }
