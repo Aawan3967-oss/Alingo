@@ -1,42 +1,43 @@
 const emojis = ["🚕","🍔","🛒","✈️","🎟️","📦"];
-const stage = document.getElementById("emoji-stage");
+const fallBox = document.getElementById("emoji-fall");
 
-emojis.forEach((e, i) => {
-  const span = document.createElement("span");
-  span.textContent = e;
-  span.style.position = "absolute";
-  span.style.left = 10 + i * 12 + "%";
-  span.style.top = "-40px";
-  span.style.fontSize = "24px";
-  stage.appendChild(span);
+// splash falling balls
+emojis.forEach((e,i)=>{
+  const el=document.createElement("div");
+  el.textContent=e;
+  el.style.position="absolute";
+  el.style.left=10+i*12+"%";
+  el.style.top="-40px";
+  el.style.fontSize="24px";
+  fallBox.appendChild(el);
 
-  setTimeout(() => {
-    span.animate([
-      { transform: "translateY(0)" },
-      { transform: "translateY(60vh)" },
-      { transform: "translateY(55vh)" }
-    ], {
-      duration: 2000,
-      easing: "ease-out",
-      fill: "forwards"
+  setTimeout(()=>{
+    el.animate([
+      {transform:"translateY(0)"},
+      {transform:"translateY(65vh)"},
+      {transform:"translateY(60vh)"}
+    ],{
+      duration:2200,
+      easing:"ease-out",
+      fill:"forwards"
     });
-  }, i * 800);
+  },i*900);
 });
 
-setTimeout(() => {
-  document.getElementById("splash").style.display = "none";
-  document.getElementById("home").style.display = "block";
+// after 10 seconds → home
+setTimeout(()=>{
+  document.getElementById("splash").style.display="none";
+  document.getElementById("home").style.display="block";
 
-  // inject emojis into disk
-  const disk = document.querySelector(".outer-disk");
-  emojis.forEach((e, i) => {
-    const el = document.createElement("div");
-    el.className = "emoji";
-    el.textContent = e;
-    const angle = (360 / emojis.length) * i;
-    el.style.transform =
-      `rotate(${angle}deg) translate(130px) rotate(-${angle}deg)`;
-    disk.appendChild(el);
+  // emojis on disk
+  const disk=document.getElementById("disk");
+  emojis.forEach((e,i)=>{
+    const d=document.createElement("div");
+    d.className="disk-emoji";
+    d.textContent=e;
+    const angle=(360/emojis.length)*i;
+    d.style.transform=`rotate(${angle}deg) translate(130px) rotate(-${angle}deg)`;
+    disk.appendChild(d);
   });
 
-}, 10000);
+},10000);
