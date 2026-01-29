@@ -1,57 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alingo - All In One Go</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root { --deep-blue: #003366; --fresh-green: #28a745; }
-        body { background-color: #f1f5f9; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: sans-serif; }
-        .welcome-text { text-align: center; margin-bottom: 2rem; }
-        .welcome-text h1 { color: var(--deep-blue); font-size: 2rem; font-weight: 900; }
+  <meta charset="UTF-8" />
+  <title>Alingo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      text-align: center;
+    }
 
-        .disk-wrapper { position: relative; width: 320px; height: 320px; display: flex; justify-content: center; align-items: center; }
-        .outer-disk { position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, var(--deep-blue), var(--fresh-green)); border-radius: 50%; border: 6px solid white; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
-        .inner-disk { position: absolute; width: 70%; height: 70%; background: white; border-radius: 50%; z-index: 5; display: flex; justify-content: center; align-items: center; }
+    /* Splash Screen */
+    #splash {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0a74da, #1abc9c);
+      color: white;
+    }
 
-        .node { position: absolute; width: 68px; height: 68px; background: white; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 11px; font-weight: bold; color: var(--deep-blue); box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10; border: 2px solid #e2e8f0; cursor: pointer; transition: 0.3s; }
-        .node:active { transform: scale(0.9); }
+    #splash img {
+      width: 180px;
+      margin-bottom: 20px;
+    }
 
-        /* بٹنز کی درست پوزیشن */
-        .n1 { top: -25px; left: 126px; } .n2 { top: 55px; right: -25px; }
-        .n3 { bottom: 55px; right: -25px; } .n4 { bottom: -25px; left: 126px; }
-        .n5 { bottom: 55px; left: -25px; } .n6 { top: 55px; left: -25px; }
-    </style>
+    #splash h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    /* Home Screen */
+    #home {
+      display: none;
+      padding-top: 40px;
+    }
+
+    .outer-circle {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #1abc9c,
+        #0a74da,
+        #9b59b6,
+        #f39c12,
+        #1abc9c
+      );
+      margin: auto;
+      position: relative;
+    }
+
+    .inner-circle {
+      width: 70%;
+      height: 70%;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 15%;
+      left: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .inner-circle img {
+      width: 80px;
+    }
+
+    .btn {
+      position: absolute;
+      background: white;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .ride { top: -10px; left: 110px; }
+    .food { right: -20px; top: 110px; }
+    .shop { bottom: -10px; left: 110px; }
+    .travel { left: -20px; top: 110px; }
+  </style>
 </head>
+
 <body>
-    <div class="welcome-text">
-        <h1>Welcome to Alingo</h1>
-        <p class="text-gray-500 font-medium">Your All-In-One Partner</p>
-    </div>
 
-    <div class="disk-wrapper">
-        <div class="outer-disk"></div>
-        <div class="inner-disk">
-            <img src="/LOGO.JPG" class="w-3/4 object-contain" onerror="this.src='https://via.placeholder.com/100?text=Alingo'">
-        </div>
-        
-        <div class="node n1" onclick="openService('Taxi')"><span>🚕</span>TAXI</div>
-        <div class="node n2" onclick="openService('Food')"><span>🍱</span>FOOD</div>
-        <div class="node n3" onclick="openService('Grocery')"><span>🛒</span>GROCERY</div>
-        <div class="node n4" onclick="openService('Tickets')"><span>🎟️</span>TICKETS</div>
-        <div class="node n5" onclick="openService('Shop')"><span>🛍️</span>SHOP</div>
-        <div class="node n6" onclick="openService('Travel')"><span>✈️</span>TRAVEL</div>
-    </div>
+<!-- Splash -->
+<div id="splash">
+  <img src="/LOGO.JPG" alt="Alingo Logo">
+  <h1>Alingo میں خوش آمدید</h1>
+</div>
 
-    <script>
-        function openService(name) {
-            if (name === 'Taxi') {
-                window.location.href = '/taxi';
-            } else {
-                alert(name + " Service is coming soon!");
-            }
-        }
-    </script>
+<!-- Home -->
+<div id="home">
+  <div class="outer-circle">
+    <div class="btn ride">Ride</div>
+    <div class="btn food">Food</div>
+    <div class="btn shop">Shop</div>
+    <div class="btn travel">Travel</div>
+
+    <div class="inner-circle">
+      <img src="/LOGO.JPG" alt="Logo">
+    </div>
+  </div>
+</div>
+
+<script src="/script.js"></script>
 </body>
 </html>
