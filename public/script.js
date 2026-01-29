@@ -34,3 +34,10 @@ function drawNodes() {
 
 // پیج لوڈ ہونے پر بٹنز بنائیں
 window.onload = drawNodes;
+
+function openService(name) {
+    // کسٹمر کو مخصوص پیج پر بھیجنے کے لیے
+    const slug = name.toLowerCase();
+    console.log("Navigating to:", slug);
+    // window.location.href = `/${slug}`; 
+}
