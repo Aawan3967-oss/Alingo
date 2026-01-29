@@ -129,6 +129,9 @@
             { name: 'سپورٹ', icon: '📞' }
         ];
 
+
+
+        
     // ٹیکسی سیکشن 
         
         <div id="taxi-section" class="hidden fixed inset-0 bg-white z-[1500] p-4 flex flex-col">
@@ -164,6 +167,45 @@
 </div>
 
 
+       //     شاپنگ اور ٹکٹنگ کا ڈھانچہ
+            
+<div id="shopping-section" class="hidden fixed inset-0 bg-slate-50 z-[1500] overflow-y-auto p-4">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-[#004a99]">Alingo شاپنگ</h2>
+        <button onclick="closeSection('shopping-section')" class="text-2xl">✕</button>
+    </div>
+    <div class="grid grid-cols-2 gap-4" id="shopping-grid">
+        <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
+            <div class="h-32 bg-gray-100 rounded-xl mb-2 flex items-center justify-center text-3xl">👕</div>
+            <h4 class="font-bold text-sm">برانڈڈ ٹی شرٹ</h4>
+            <p class="text-blue-600 font-bold text-xs mt-1">Rs. 1,200</p>
+            <button onclick="addToCart('T-Shirt', 1200)" class="w-full mt-2 bg-[#004a99] text-white py-2 rounded-lg text-xs">خریدیں</button>
+        </div>
+        </div>
+</div>
+
+<div id="tickets-section" class="hidden fixed inset-0 bg-white z-[1500] p-4">
+    <div class="flex items-center mb-6">
+        <button onclick="closeSection('tickets-section')" class="ml-4 text-xl">←</button>
+        <h2 class="text-xl font-bold">ٹکٹ اور بکنگ</h2>
+    </div>
+    <div class="space-y-4">
+        <div onclick="bookTicket('Bus')" class="p-4 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 text-white flex justify-between items-center cursor-pointer shadow-lg">
+            <div><h3 class="font-bold">بس ٹکٹ</h3><p class="text-xs opacity-80">انٹر سٹی سفر کے لیے</p></div>
+            <span class="text-3xl">🚌</span>
+        </div>
+        <div onclick="bookTicket('Cinema')" class="p-4 rounded-2xl bg-gradient-to-r from-purple-600 to-purple-700 text-white flex justify-between items-center cursor-pointer shadow-lg">
+            <div><h3 class="font-bold">سینما</h3><p class="text-xs opacity-80">نئی فلموں کی بکنگ</p></div>
+            <span class="text-3xl">🍿</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+        
         
         function initCircle() {
             const ring = document.getElementById('menuRing');
