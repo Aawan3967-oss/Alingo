@@ -3,62 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alingo - Super App</title>
+    <title>Alingo Super App</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #f0f4f8; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; }
-        
-        /* Splash Screen */
-        #splash { position: fixed; inset: 0; background: white; z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; }
-
-        /* Disk Setup */
-        .disk-wrapper { position: relative; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center; }
-        .outer-disk { position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, #004a99, #1eb53a); border-radius: 50%; border: 8px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .inner-disk { position: absolute; width: 70%; height: 70%; background: white; border-radius: 50%; z-index: 5; display: flex; justify-content: center; align-items: center; }
-
-        /* Fixed Buttons */
-        .node { position: absolute; width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 10px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10; border: 2px solid #eee; }
-        
-        /* Positioning Buttons on the edge */
-        .n1 { top: -20px; left: 120px; } /* Top */
-        .n2 { top: 50px; right: -25px; } 
-        .n3 { bottom: 50px; right: -25px; }
-        .n4 { bottom: -20px; left: 120px; } /* Bottom */
-        .n5 { bottom: 50px; left: -25px; }
-        .n6 { top: 50px; left: -25px; }
+        /* سارا ڈیزائن یہاں ہے تاکہ فائل گم نہ ہو */
+        .disk-wrapper { position: relative; width: 320px; height: 320px; margin: auto; }
+        .outer-disk { 
+            position: absolute; width: 100%; height: 100%; 
+            background: linear-gradient(135deg, #004a99, #1eb53a); 
+            border-radius: 50%; border: 8px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .inner-disk { 
+            position: absolute; width: 70%; height: 70%; top: 15%; left: 15%;
+            background: white; border-radius: 50%; z-index: 5; 
+            display: flex; justify-content: center; align-items: center;
+        }
+        .node { 
+            position: absolute; width: 65px; height: 65px; background: white; 
+            border-radius: 50%; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; font-size: 10px; 
+            font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10;
+        }
+        /* بٹنز کی پوزیشن */
+        .n1 { top: -20px; left: 125px; } .n2 { top: 60px; right: -20px; }
+        .n3 { bottom: 60px; right: -20px; } .n4 { bottom: -20px; left: 125px; }
+        .n5 { bottom: 60px; left: -20px; } .n6 { top: 60px; left: -20px; }
     </style>
 </head>
-<body>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
 
-    <div id="splash">
-        <img src="/LOGO.JPG" width="120" onerror="this.src='https://via.placeholder.com/120'">
-        <h1 style="color: #004a99; font-style: italic; font-weight: bold; margin-top: 10px;">Alingo</h1>
-    </div>
-
-    <div style="text-align: center; margin-bottom: 40px;">
-        <h1 style="color: #004a99; font-weight: 900; font-size: 26px; letter-spacing: 1px;">WELCOME TO ALINGO</h1>
-        <p style="color: #666; font-size: 14px;">All In One Go Service</p>
+    <div class="text-center mb-10">
+        <h1 class="text-3xl font-black text-[#004a99]">WELCOME TO ALINGO</h1>
+        <p class="text-gray-500">Your All-In-One Partner</p>
     </div>
 
     <div class="disk-wrapper">
         <div class="outer-disk"></div>
         <div class="inner-disk">
-            <img src="/LOGO.JPG" style="width: 80%;" onerror="this.src='https://via.placeholder.com/80'">
+            <img src="/LOGO.JPG" class="w-24" onerror="this.src='https://via.placeholder.com/100?text=Alingo'">
         </div>
         
-        <div class="node n1"><span>🚕</span><span>TAXI</span></div>
-        <div class="node n2"><span>🍱</span><span>FOOD</span></div>
-        <div class="node n3"><span>🛒</span><span>GROCERY</span></div>
-        <div class="node n4"><span>🎟️</span><span>TICKETS</span></div>
-        <div class="node n5"><span>🛍️</span><span>SHOP</span></div>
-        <div class="node n6"><span>✈️</span><span>TRAVEL</span></div>
+        <div class="node n1"><span>🚕</span>TAXI</div>
+        <div class="node n2"><span>🍱</span>FOOD</div>
+        <div class="node n3"><span>🛒</span>GROCERY</div>
+        <div class="node n4"><span>🎟️</span>TICKETS</div>
+        <div class="node n5"><span>🛍️</span>SHOP</div>
+        <div class="node n6"><span>✈️</span>TRAVEL</div>
     </div>
 
     <script>
-        setTimeout(() => {
-            document.getElementById('splash').style.opacity = '0';
-            setTimeout(() => document.getElementById('splash').style.display = 'none', 500);
-        }, 3000);
+        console.log("Alingo App Loaded Successfully!");
     </script>
 </body>
 </html>
