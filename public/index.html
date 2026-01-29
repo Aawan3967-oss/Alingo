@@ -7,8 +7,8 @@
 
 <style>
 :root{
-  --indigo:#2b2d6e;
-  --purple:#3b1d5a;
+  --indigo:#2c2f8c;
+  --purple:#4b1d6b;
   --green:#2ecc71;
 }
 
@@ -25,144 +25,139 @@ body{
 #splash{
   position:fixed;
   inset:0;
-  background:#fff;
-  border:3px solid;
-  border-image:linear-gradient(135deg,var(--indigo),var(--purple)) 1;
+  background:white;
+  border:2px solid;
+  border-image:linear-gradient(90deg,var(--indigo),var(--purple)) 1;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
   z-index:10;
 }
 
-#splash img{
-  width:180px;
-  margin-bottom:40px;
+#logoBig{
+  width:200px;
+  z-index:2;
 }
 
-.emoji-rain{
+.emoji-ball{
   position:absolute;
-  top:-40px;
-  font-size:24px;
-  animation:fall 2s ease forwards;
-}
-
-@keyframes fall{
-  to{top:55%; }
-}
-
-.emoji-line{
-  position:absolute;
-  top:55%;
+  font-size:22px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:white;
   display:flex;
-  gap:12px;
-}
-
-.emoji-line span{
-  animation:spin 2.4s linear infinite;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 
 /* ================= HOME ================= */
 #home{
   display:none;
   height:100vh;
-  background:linear-gradient(180deg,var(--indigo),#111);
-  color:#fff;
-  padding:16px;
+  background:linear-gradient(180deg,#10143c,#0e2f2a);
+  color:white;
   text-align:center;
 }
 
-.brand{
-  margin-top:10px;
+header{
+  padding-top:20px;
 }
 
-.brand .alin{
-  font-size:42px;
-  color:var(--green);
-  font-weight:800;
-}
-.brand .go{
-  font-size:42px;
-  color:#7f8cff;
-  font-weight:800;
-}
+.alin{color:var(--green);font-size:48px;font-weight:800}
+.go{color:var(--indigo);font-size:48px;font-weight:800}
 
-.slogan{
-  margin-top:4px;
+.tagline{
+  margin-top:6px;
   font-size:14px;
+  letter-spacing:1px;
 }
-.blink{
-  animation:blink 1.2s infinite;
-}
-@keyframes blink{50%{opacity:0}}
 
+.blink{
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,50%{opacity:1}
+  51%,100%{opacity:0}
+}
+
+/* ================= DISK ================= */
 .disk-wrap{
-  margin:30px auto;
+  position:relative;
   width:320px;
   height:320px;
-  position:relative;
+  margin:20px auto;
 }
 
 .outer-disk{
-  width:100%;
-  height:100%;
+  position:absolute;
+  inset:0;
   border-radius:50%;
   background:conic-gradient(
-    var(--green),
-    #3498db,
+    #2ecc71,
+    #2c2f8c,
     #9b59b6,
     #f1c40f,
-    var(--green)
+    #2ecc71
   );
-  animation:slow 40s linear infinite;
-}
-
-@keyframes slow{
-  to{transform:rotate(360deg)}
+  animation:spin 40s linear infinite;
 }
 
 .inner-disk{
   position:absolute;
   width:65%;
   height:65%;
-  background:#fff;
+  background:white;
   border-radius:50%;
   top:17.5%;
   left:17.5%;
   display:flex;
   justify-content:center;
   align-items:center;
+  z-index:2;
 }
 
 .inner-disk img{
   width:90px;
 }
 
-/* emojis near edges */
-.edge-emoji{
-  position:absolute;
-  font-size:22px;
+@keyframes spin{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
 }
-.e1{top:20px; left:140px}
-.e2{right:18px; top:145px}
-.e3{bottom:20px; left:140px}
-.e4{left:18px; top:145px}
 
-/* bottom buttons */
-.bottom-buttons{
+/* emoji markers */
+.marker{
+  position:absolute;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:white;
   display:flex;
-  justify-content:space-around;
-  margin-top:10px;
+  justify-content:center;
+  align-items:center;
+  font-size:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
 }
-.bottom-buttons div{
-  background:#ffffff22;
-  padding:10px 14px;
-  border-radius:20px;
-  font-size:12px;
+
+/* ================= BOTTOM BUTTONS ================= */
+.bottom-buttons{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  padding:0 20px 20px;
+}
+
+.bottom-buttons button{
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  background:#ffffff10;
+  color:white;
+  font-size:14px;
+  backdrop-filter:blur(6px);
 }
 </style>
 </head>
@@ -171,57 +166,80 @@ body{
 
 <!-- SPLASH -->
 <div id="splash">
-  <img src="/LOGO.JPG">
-
-  <!-- emoji rain -->
-  <span class="emoji-rain" style="left:20%">🚕</span>
-  <span class="emoji-rain" style="left:35%">🍔</span>
-  <span class="emoji-rain" style="left:50%">🛒</span>
-  <span class="emoji-rain" style="left:65%">🚌</span>
-
-  <div class="emoji-line" style="display:none">
-    <span>🚕</span><span>🍔</span><span>🛒</span><span>🚌</span>
-  </div>
+  <img id="logoBig" src="/LOGO.JPG">
 </div>
 
 <!-- HOME -->
 <div id="home">
-  <div class="brand">
+  <header>
     <span class="alin">Alin</span><span class="go">Go</span>
-    <div class="slogan">Let life move<span>..</span><span class="blink">.</span></div>
-  </div>
+    <div class="tagline">
+      Let’s move forward go<span>.</span><span>.</span><span class="blink">.</span>
+    </div>
+  </header>
 
   <div class="disk-wrap">
-    <div class="outer-disk"></div>
-
-    <div class="edge-emoji e1">🚕</div>
-    <div class="edge-emoji e2">🍔</div>
-    <div class="edge-emoji e3">🛒</div>
-    <div class="edge-emoji e4">🚌</div>
-
+    <div class="outer-disk" id="outerDisk"></div>
     <div class="inner-disk">
       <img src="/LOGO.JPG">
     </div>
   </div>
 
   <div class="bottom-buttons">
-    <div>Wallet</div>
-    <div>Orders</div>
-    <div>Support</div>
-    <div>Profile</div>
+    <button>Wallet</button>
+    <button>Orders</button>
+    <button>Support</button>
+    <button>Profile</button>
   </div>
 </div>
 
 <script>
-setTimeout(()=>{
-  document.querySelectorAll('.emoji-rain').forEach(e=>e.style.display='none');
-  document.querySelector('.emoji-line').style.display='flex';
-},2000);
+/* ========== SPLASH ANIMATION ========== */
+const splash=document.getElementById("splash");
+const emojis=["🚕","🍔","🛒","🚌","📦","🎟️"];
+let balls=[];
 
+emojis.forEach((e,i)=>{
+  const b=document.createElement("div");
+  b.className="emoji-ball";
+  b.innerText=e;
+  b.style.left=20+ i*50 +"px";
+  b.style.top="-60px";
+  splash.appendChild(b);
+  balls.push(b);
+
+  setTimeout(()=>{
+    b.animate([
+      {transform:"translateY(0)"},
+      {transform:"translateY(70vh)"},
+      {transform:"translateY(60vh)"}
+    ],{
+      duration:2000,
+      easing:"cubic-bezier(.34,1.56,.64,1)",
+      fill:"forwards"
+    });
+  },i*700);
+});
+
+/* switch to home after 10s */
 setTimeout(()=>{
-  document.getElementById('splash').style.display='none';
-  document.getElementById('home').style.display='block';
-},3500);
+  splash.style.display="none";
+  document.getElementById("home").style.display="block";
+},10000);
+
+/* ========== DISK MARKERS ========== */
+const disk=document.getElementById("outerDisk");
+const icons=["🚕","🍔","🛒","🚌"];
+icons.forEach((ic,i)=>{
+  const m=document.createElement("div");
+  m.className="marker";
+  m.innerText=ic;
+  const angle=(i/icons.length)*360;
+  const r=150;
+  m.style.left=160+Math.cos(angle*Math.PI/180)*r-16+"px";
+  m.style.top =160+Math.sin(angle*Math.PI/180)*r-16+"px";
+  disk.appendChild(m);
+});
 </script>
 
 </body>
