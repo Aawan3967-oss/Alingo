@@ -1,213 +1,228 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Alingo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Alingo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --green: #2ecc71;
-      --indigo: #3f51b5;
-      --dark: #1f2933;
-    }
+<style>
+:root{
+  --indigo:#2b2d6e;
+  --purple:#3b1d5a;
+  --green:#2ecc71;
+}
 
-    body {
-      margin: 0;
-      font-family: "Segoe UI", system-ui, sans-serif;
-      background: #ffffff;
-      color: var(--dark);
-      overflow: hidden;
-    }
+*{box-sizing:border-box}
 
-    /* ========== SPLASH ========== */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: #ffffff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-      animation: fadeOut 1s ease forwards;
-      animation-delay: 2.6s;
-    }
+body{
+  margin:0;
+  font-family:system-ui,Segoe UI,sans-serif;
+  background:#fff;
+  overflow:hidden;
+}
 
-    #splash img {
-      width: 140px;
-      animation: scaleIn 1.6s ease;
-    }
+/* ================= SPLASH ================= */
+#splash{
+  position:fixed;
+  inset:0;
+  background:#fff;
+  border:3px solid;
+  border-image:linear-gradient(135deg,var(--indigo),var(--purple)) 1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
 
-    #splash p {
-      margin-top: 18px;
-      font-size: 14px;
-      letter-spacing: 1px;
-      color: #777;
-    }
+#splash img{
+  width:180px;
+  margin-bottom:40px;
+}
 
-    /* ========== HOME ========== */
-    #home {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 0;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 3s;
-    }
+.emoji-rain{
+  position:absolute;
+  top:-40px;
+  font-size:24px;
+  animation:fall 2s ease forwards;
+}
 
-    /* Brand Title */
-    .brand {
-      text-align: center;
-    }
+@keyframes fall{
+  to{top:55%; }
+}
 
-    .brand .alin {
-      color: var(--green);
-      font-size: 46px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+.emoji-line{
+  position:absolute;
+  top:55%;
+  display:flex;
+  gap:12px;
+}
 
-    .brand .go {
-      color: var(--indigo);
-      font-size: 46px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+.emoji-line span{
+  animation:spin 2.4s linear infinite;
+}
 
-    .tagline {
-      font-size: 14px;
-      color: #666;
-      margin-top: 6px;
-    }
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
 
-    /* ========== CIRCULAR SYSTEM ========== */
-    .outer-circle {
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: conic-gradient(
-        #2ecc71,
-        #3f51b5,
-        #9b59b6,
-        #f1c40f,
-        #2ecc71
-      );
-      position: relative;
-      animation: slowRotate 28s linear infinite;
-    }
+/* ================= HOME ================= */
+#home{
+  display:none;
+  height:100vh;
+  background:linear-gradient(180deg,var(--indigo),#111);
+  color:#fff;
+  padding:16px;
+  text-align:center;
+}
 
-    .inner-circle {
-      width: 70%;
-      height: 70%;
-      background: #ffffff;
-      border-radius: 50%;
-      position: absolute;
-      top: 15%;
-      left: 15%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
+.brand{
+  margin-top:10px;
+}
 
-    .inner-circle img {
-      width: 78px;
-      margin-bottom: 6px;
-    }
+.brand .alin{
+  font-size:42px;
+  color:var(--green);
+  font-weight:800;
+}
+.brand .go{
+  font-size:42px;
+  color:#7f8cff;
+  font-weight:800;
+}
 
-    .inner-circle span {
-      font-size: 11px;
-      color: #888;
-    }
+.slogan{
+  margin-top:4px;
+  font-size:14px;
+}
+.blink{
+  animation:blink 1.2s infinite;
+}
+@keyframes blink{50%{opacity:0}}
 
-    /* Buttons on edge */
-    .btn {
-      position: absolute;
-      background: #ffffff;
-      padding: 7px 16px;
-      border-radius: 40px;
-      font-size: 12px;
-      font-weight: 600;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      cursor: pointer;
-      transition: transform .25s ease;
-    }
+.disk-wrap{
+  margin:30px auto;
+  width:320px;
+  height:320px;
+  position:relative;
+}
 
-    .btn:hover {
-      transform: scale(1.08);
-    }
+.outer-disk{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:conic-gradient(
+    var(--green),
+    #3498db,
+    #9b59b6,
+    #f1c40f,
+    var(--green)
+  );
+  animation:slow 40s linear infinite;
+}
 
-    .ride   { top: -18px; left: 115px; }
-    .food   { right: -32px; top: 115px; }
-    .shop   { bottom: -18px; left: 115px; }
-    .travel { left: -32px; top: 115px; }
+@keyframes slow{
+  to{transform:rotate(360deg)}
+}
 
-    /* Bottom trust line */
-    .trust {
-      font-size: 12px;
-      color: #888;
-      margin-bottom: 6px;
-    }
+.inner-disk{
+  position:absolute;
+  width:65%;
+  height:65%;
+  background:#fff;
+  border-radius:50%;
+  top:17.5%;
+  left:17.5%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-    /* Animations */
-    @keyframes scaleIn {
-      from { transform: scale(.6); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+.inner-disk img{
+  width:90px;
+}
 
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
+/* emojis near edges */
+.edge-emoji{
+  position:absolute;
+  font-size:22px;
+}
+.e1{top:20px; left:140px}
+.e2{right:18px; top:145px}
+.e3{bottom:20px; left:140px}
+.e4{left:18px; top:145px}
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes slowRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-  </style>
+/* bottom buttons */
+.bottom-buttons{
+  display:flex;
+  justify-content:space-around;
+  margin-top:10px;
+}
+.bottom-buttons div{
+  background:#ffffff22;
+  padding:10px 14px;
+  border-radius:20px;
+  font-size:12px;
+}
+</style>
 </head>
 
 <body>
 
 <!-- SPLASH -->
 <div id="splash">
-  <img src="/LOGO.JPG" alt="Alingo Logo">
-  <p>زندگی کو حرکت میں</p>
+  <img src="/LOGO.JPG">
+
+  <!-- emoji rain -->
+  <span class="emoji-rain" style="left:20%">🚕</span>
+  <span class="emoji-rain" style="left:35%">🍔</span>
+  <span class="emoji-rain" style="left:50%">🛒</span>
+  <span class="emoji-rain" style="left:65%">🚌</span>
+
+  <div class="emoji-line" style="display:none">
+    <span>🚕</span><span>🍔</span><span>🛒</span><span>🚌</span>
+  </div>
 </div>
 
 <!-- HOME -->
 <div id="home">
-
   <div class="brand">
     <span class="alin">Alin</span><span class="go">Go</span>
-    <div class="tagline">Ride • Food • Shopping • Travel</div>
+    <div class="slogan">Let life move<span>..</span><span class="blink">.</span></div>
   </div>
 
-  <div class="outer-circle">
-    <div class="btn ride">Ride</div>
-    <div class="btn food">Food</div>
-    <div class="btn shop">Shop</div>
-    <div class="btn travel">Travel</div>
+  <div class="disk-wrap">
+    <div class="outer-disk"></div>
 
-    <div class="inner-circle">
+    <div class="edge-emoji e1">🚕</div>
+    <div class="edge-emoji e2">🍔</div>
+    <div class="edge-emoji e3">🛒</div>
+    <div class="edge-emoji e4">🚌</div>
+
+    <div class="inner-disk">
       <img src="/LOGO.JPG">
-      <span>One Life • One App</span>
     </div>
   </div>
 
-  <div class="trust">
-    پاکستان کا پہلا ڈیجیٹل سٹی پلیٹ فارم
+  <div class="bottom-buttons">
+    <div>Wallet</div>
+    <div>Orders</div>
+    <div>Support</div>
+    <div>Profile</div>
   </div>
-
 </div>
+
+<script>
+setTimeout(()=>{
+  document.querySelectorAll('.emoji-rain').forEach(e=>e.style.display='none');
+  document.querySelector('.emoji-line').style.display='flex';
+},2000);
+
+setTimeout(()=>{
+  document.getElementById('splash').style.display='none';
+  document.getElementById('home').style.display='block';
+},3500);
+</script>
 
 </body>
 </html>
