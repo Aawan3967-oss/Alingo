@@ -36,3 +36,57 @@ function loadFoodMenu() {
         </div>
     `;
 }
+
+
+let map, marker;
+
+// ٹیکسی مینیو کھولنے کا فنکشن
+function loadTaxiBooking() {
+    document.getElementById('taxi-section').classList.remove('hidden');
+    initMap();
+}
+
+function initMap() {
+    // کسٹمر کی موجودہ لوکیشن حاصل کرنا
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const userLoc = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            // میپ لوڈ کرنا (گوگل میپس لائبریری درکار ہوگی)
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: userLoc,
+                zoom: 15,
+                disableDefaultUI: true
+            });
+
+            marker = new google.maps.Marker({
+                position: userLoc,
+                map: map,
+                title: "آپ یہاں ہیں"
+            });
+        });
+    } else {
+        alert("براہ کرم لوکیشن آن کریں");
+    }
+}
+
+async function bookRide() {
+    const vehicle = "Bike"; // یہ سلیکشن سے آئے گا
+    const location = document.getElementById('pickup-location').value;
+
+    try {
+        await db.collection('orders').add({
+            item: "Taxi Request: " + vehicle,
+            customerLocation: location,
+            status: "Pending",
+            time: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        alert("ڈرائیور آپ کی طرف آ رہا ہے!");
+    } catch (e) {
+        console.error(e);
+    }
+}
+
