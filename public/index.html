@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,70 +7,60 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root { --deep-blue: #004a99; --fresh-green: #1eb53a; }
-        body { background-color: #f0f4f8; font-family: system-ui, sans-serif; overflow-x: hidden; }
-
-        /* پرانی سپلیش اسکرین */
+        /* Splash Screen */
         #splash {
-            position: fixed; inset: 0; background: white; z-index: 1000;
+            position: fixed; inset: 0; background: white; z-index: 9999;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
-
-        /* وہی گول مینیو ڈیزائن */
+        /* Disk Styling */
         .disk-wrapper {
-            position: relative; width: 340px; height: 340px;
-            margin: auto; display: flex; justify-content: center; align-items: center;
+            position: relative; width: 320px; height: 320px; margin: auto;
+            display: flex; justify-content: center; align-items: center;
         }
         .outer-disk {
             position: absolute; width: 100%; height: 100%; border-radius: 50%;
             background: linear-gradient(135deg, var(--fresh-green), var(--deep-blue));
-            box-shadow: 0 15px 35px rgba(0,74,153,0.3); border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 6px solid white;
         }
         .inner-disk {
-            position: absolute; width: 130px; height: 130px; background: white;
-            border-radius: 50%; z-index: 10; display: flex; justify-content: center; align-items: center;
+            position: absolute; width: 100px; height: 100px; background: white;
+            border-radius: 50%; z-index: 10; overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
         }
         .service-node {
-            position: absolute; width: 75px; height: 75px; background: white;
+            position: absolute; width: 65px; height: 65px; background: white;
             border-radius: 50%; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            cursor: pointer; transition: transform 0.2s; z-index: 20;
+            justify-content: center; align-items: center; font-size: 10px; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer; z-index: 20;
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50">
 
     <div id="splash">
-        <img src="/public/LOGO.JPG" alt="Alingo" class="w-40 h-40 object-contain mb-4 animate-pulse">
-        <h1 class="text-4xl font-black text-[#004a99] italic">Alingo</h1>
+        <img src="/public/LOGO.JPG" class="w-32 h-32 object-contain animate-bounce">
+        <h1 class="text-3xl font-bold text-[#004a99] mt-4">Alingo</h1>
     </div>
 
-    <div id="home-content" class="hidden flex flex-col items-center justify-center min-h-screen p-4">
-        <div class="text-center mb-10">
-            <h2 class="text-2xl font-extrabold text-[#004a99]">خوش آمدید، Alingo میں!</h2>
-        </div>
-
+    <div id="main-app" class="hidden min-h-screen flex flex-col items-center justify-center p-6">
+        <h2 class="text-2xl font-bold text-[#004a99] mb-12">Welcome to Alingo!</h2>
+        
         <div class="disk-wrapper" id="menuRing">
             <div class="outer-disk"></div>
             <div class="inner-disk">
-                <img src="/public/LOGO.JPG" alt="Alingo" class="w-24 h-24 object-contain">
+                <img src="/public/LOGO.JPG" class="w-full h-full object-cover">
             </div>
             </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script src="script.js"></script>
-
     <script>
-        // سپلیش اسکرین کو ہٹانے کا پرانا لاجک
         window.onload = () => {
             setTimeout(() => {
-                document.getElementById('splash').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('splash').style.display = 'none';
-                    document.getElementById('home-content').classList.remove('hidden');
-                    if(typeof initCircle === 'function') initCircle(); 
-                }, 800);
+                document.getElementById('splash').style.display = 'none';
+                document.getElementById('main-app').classList.remove('hidden');
+                initCircle(); // Initialize buttons
             }, 3000);
         };
     </script>
