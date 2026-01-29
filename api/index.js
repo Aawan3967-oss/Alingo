@@ -1,12 +1,25 @@
 const express = require('express');
-const app = express();
 const path = require('path');
+const app = express();
 
-// یہ لائن آپ کی HTML فائلز کو سرور کے ذریعے دکھائے گی
+app.use(express.json());
+
+// تمام سٹیٹک فائلز (HTML, CSS, JS) کو ایکسیس دینا
 app.use(express.static(path.join(__dirname, '../')));
 
-app.get('/api/hello', (req, res) => {
-  res.json({ message: "Alingo Express Server is Running!" });
+// کسٹمر کے لیے روٹ
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../index.html'));
+});
+
+// ایڈمن کے لیے روٹ
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, '../admin.html'));
+});
+
+// ٹیسٹ API تاکہ پتہ چلے سرور چل رہا ہے
+app.get('/api/status', (req, res) => {
+    res.json({ status: "Alingo Server Online", version: "1.0.0" });
 });
 
 module.exports = app;
