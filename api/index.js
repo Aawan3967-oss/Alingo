@@ -4,22 +4,17 @@ const app = express();
 
 app.use(express.json());
 
-// تمام سٹیٹک فائلز (HTML, CSS, JS) کو ایکسیس دینا
-app.use(express.static(path.join(__dirname, '../')));
+// تمام سٹیٹک فائلز کے لیے راستہ درست کریں
+app.use(express.static(path.join(__dirname, '..')));
 
-// کسٹمر کے لیے روٹ
+// ہوم پیج
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
-// ایڈمن کے لیے روٹ
+// ایڈمن پیج
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, '../admin.html'));
-});
-
-// ٹیسٹ API تاکہ پتہ چلے سرور چل رہا ہے
-app.get('/api/status', (req, res) => {
-    res.json({ status: "Alingo Server Online", version: "1.0.0" });
+    res.sendFile(path.join(__dirname, '..', 'admin.html'));
 });
 
 module.exports = app;
