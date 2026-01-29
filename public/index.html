@@ -1,112 +1,131 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Alingo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="/manifest.json">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fa;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>Alingo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* Splash Screen */
-    #splash {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #0a74da, #1abc9c);
-      color: white;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #ffffff;
+}
 
-    #splash img {
-      width: 180px;
-      margin-bottom: 20px;
-    }
+/* ---------------- SPLASH ---------------- */
+#splash {
+  height: 100vh;
+  border: 6px solid;
+  border-image: linear-gradient(45deg, #0a74da, #1abc9c) 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    #splash h1 {
-      font-size: 28px;
-      margin: 0;
-    }
+#splash img {
+  width: 260px;
+  margin-bottom: 25px;
+}
 
-    /* Home Screen */
-    #home {
-      display: none;
-      padding-top: 40px;
-    }
+#splash h1 {
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: #0a74da;
+  margin: 0;
+}
 
-    .outer-circle {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: conic-gradient(
-        #1abc9c,
-        #0a74da,
-        #9b59b6,
-        #f39c12,
-        #1abc9c
-      );
-      margin: auto;
-      position: relative;
-    }
+#splash p {
+  font-size: 18px;
+  color: #1abc9c;
+  margin-top: 10px;
+}
 
-    .inner-circle {
-      width: 70%;
-      height: 70%;
-      background: white;
-      border-radius: 50%;
-      position: absolute;
-      top: 15%;
-      left: 15%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+/* ---------------- HOME ---------------- */
+#home {
+  display: none;
+  padding-top: 40px;
+}
 
-    .inner-circle img {
-      width: 80px;
-    }
+/* Outer colorful disk */
+.outer-circle {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+  background: conic-gradient(
+    #0a74da 0deg 90deg,
+    #1abc9c 90deg 180deg,
+    #9b59b6 180deg 270deg,
+    #f39c12 270deg 360deg
+  );
+}
 
-    .btn {
-      position: absolute;
-      background: white;
-      border-radius: 20px;
-      padding: 6px 12px;
-      font-size: 12px;
-      cursor: pointer;
-    }
+/* Inner white disk */
+.inner-circle {
+  width: 70%;
+  height: 70%;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .ride { top: -10px; left: 110px; }
-    .food { right: -20px; top: 110px; }
-    .shop { bottom: -10px; left: 110px; }
-    .travel { left: -20px; top: 110px; }
-  </style>
+.inner-circle img {
+  width: 100px;
+}
+
+/* Buttons */
+.circle-btn {
+  position: absolute;
+  width: 70px;
+  height: 30px;
+  background: white;
+  border-radius: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Equal positions */
+.btn-ride   { top: 5px; left: 125px; }
+.btn-food   { right: 5px; top: 125px; }
+.btn-shop   { bottom: 5px; left: 125px; }
+.btn-travel { left: 5px; top: 125px; }
+
+</style>
 </head>
 
 <body>
 
-<!-- Splash -->
+<!-- Splash Screen -->
 <div id="splash">
   <img src="/LOGO.JPG" alt="Alingo Logo">
-  <h1>Alingo میں خوش آمدید</h1>
+  <h1>WELCOME TO ALINGO</h1>
+  <p>Your All-in-One Urban Services Platform</p>
 </div>
 
-<!-- Home -->
+<!-- Home Screen -->
 <div id="home">
   <div class="outer-circle">
-    <div class="btn ride">Ride</div>
-    <div class="btn food">Food</div>
-    <div class="btn shop">Shop</div>
-    <div class="btn travel">Travel</div>
+
+    <div class="circle-btn btn-ride">Ride</div>
+    <div class="circle-btn btn-food">Food</div>
+    <div class="circle-btn btn-shop">Shop</div>
+    <div class="circle-btn btn-travel">Travel</div>
 
     <div class="inner-circle">
-      <img src="/LOGO.JPG" alt="Logo">
+      <img src="/LOGO.JPG">
     </div>
+
   </div>
 </div>
 
