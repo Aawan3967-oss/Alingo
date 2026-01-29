@@ -1,85 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Alingo - All In One Go</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root { --alingo-blue: #004a99; --alingo-green: #1eb53a; }
-        body { background: #f8fafc; font-family: 'Segoe UI', sans-serif; overflow: hidden; margin: 0; }
+const services = [
+    { id: 'taxi', name: 'TAXI', icon: '🚕' },
+    { id: 'food', name: 'FOOD', icon: '🍱' },
+    { id: 'grocery', name: 'GROCERY', icon: '🛒' },
+    { id: 'tickets', name: 'TICKETS', icon: '🎟️' },
+    { id: 'shopping', name: 'SHOP', icon: '🛍️' },
+    { id: 'travel', name: 'TRAVEL', icon: '✈️' }
+];
 
-        /* Splash Screen */
-        #splash {
-            position: fixed; inset: 0; background: white; z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
+window.renderButtons = function() {
+    const wrapper = document.getElementById('button-wrapper');
+    if (!wrapper) return;
+    wrapper.innerHTML = '';
 
-        /* Main Disk Container */
-        .disk-container {
-            position: relative; width: 90vw; height: 90vw; max-width: 400px; max-height: 400px;
-            display: flex; justify-content: center; align-items: center;
-        }
+    const radius = 160; // یہ بٹنز کو ڈسک کے کنارے پر رکھے گا
+    const centerX = 0; 
+    const centerY = 0;
 
-        /* Outer Disk - Full Screen feel */
-        .outer-disk {
-            position: absolute; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--alingo-blue), var(--alingo-green));
-            border-radius: 50%; border: 10px solid white;
-            box-shadow: 0 20px 50px rgba(0,74,153,0.3);
-        }
+    services.forEach((s, i) => {
+        const angle = (i * (360 / services.length)) * (Math.PI / 180);
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
 
-        /* Inner Disk - 70% of Outer */
-        .inner-disk {
-            position: absolute; width: 70%; height: 70%;
-            background: white; border-radius: 50%; z-index: 10;
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        /* Buttons on Disk Edge */
-        .service-btn {
-            position: absolute; width: 65px; height: 65px; background: white;
-            border-radius: 50%; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; font-size: 10px;
-            font-weight: bold; color: var(--alingo-blue);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 2px solid #e2e8f0;
-            cursor: pointer; transition: all 0.3s ease; z-index: 20;
-        }
-        .service-btn:active { transform: scale(0.9); }
-    </style>
-</head>
-<body>
-
-    <div id="splash">
-        <img src="/public/LOGO.JPG" class="w-32 animate-bounce" onerror="this.src='https://via.placeholder.com/150?text=Alingo'">
-        <h1 class="text-3xl font-bold text-[#004a99] mt-4 italic">Alingo</h1>
-    </div>
-
-    <div id="main-app" class="hidden h-screen flex flex-col items-center justify-start pt-10">
-        <div class="text-center mb-8 px-6">
-            <h2 class="text-3xl font-black text-[#004a99] uppercase tracking-tighter">Welcome to Alingo</h2>
-            <p class="text-gray-500 font-medium">Your Daily Life Partner</p>
-        </div>
-
-        <div class="disk-container">
-            <div class="outer-disk"></div>
-            <div class="inner-disk">
-                <img src="/public/LOGO.JPG" class="w-4/5 h-4/5 object-contain" alt="Logo">
-            </div>
-            <div id="button-wrapper"></div>
-        </div>
-    </div>
-
-    <script src="/script.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('splash').style.display = 'none';
-                document.getElementById('main-app').classList.remove('hidden');
-                if(window.renderButtons) window.renderButtons();
-            }, 3000);
-        });
-    </script>
-</body>
-</html>
+        const btn = document.createElement('div');
+        btn.className = 'service-btn';
+        btn.innerHTML = `<span>${s.icon}</span><span>${s.name}</span>`;
+        
+        // Positioning from center of disk
+        btn.style.left = `calc(50% + ${x}px - 32px)`;
+        btn.style.top = `calc(50% + ${y}px - 32px)`;
+        
+        btn.onclick = () => alert(`Opening ${s.name} Service...`);
+        wrapper.appendChild(btn);
+    });
+};
