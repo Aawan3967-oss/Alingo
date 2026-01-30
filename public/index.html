@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AlinGo Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/home.css">
+<meta charset="UTF-8">
+<title>AlinGo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/main.css">
 </head>
 
-<body class="home">
+<body>
 
-<header>
-  <h1>
-    <span class="green">Alin</span><span class="indigo">Go</span>
-  </h1>
-  <p>Everything you need · go...</p>
-</header>
-
-<div class="actions">
-  <button onclick="openDashboard()">Open Dashboard</button>
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-border"></div>
+  <img src="assets/LOGO.JPG" class="splash-logo">
+  <div id="emoji-fall"></div>
 </div>
 
-<script src="js/home.js"></script>
+<!-- HOME -->
+<div id="home">
+
+  <header class="brand">
+    <h1><span class="alin">Alin</span><span class="go">Go</span></h1>
+    <p>Everything you need · go<span class="dots">...</span></p>
+  </header>
+
+  <div class="disk-wrap">
+    <div class="disk-back"></div>
+    <div class="disk-front">
+      <img src="assets/LOGO.JPG">
+    </div>
+  </div>
+
+  <div class="home-actions">
+    <a href="dashboard.html" class="btn primary">Open Dashboard</a>
+    <a href="#" class="btn secondary">Become Partner</a>
+  </div>
+
+</div>
+
+<script src="js/main.js"></script>
 </body>
 </html>
