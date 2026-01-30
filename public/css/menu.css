@@ -1,0 +1,70 @@
+:root{
+  --indigo:#1f256b;
+  --green:#2ecc71;
+}
+
+body{
+  margin:0;
+  font-family:system-ui;
+  background:#0f172a;
+}
+
+.menu{
+  width:260px;
+  height:100vh;
+  background:linear-gradient(180deg,var(--indigo),#020617);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+}
+
+.profile{
+  text-align:center;
+  padding:20px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.profile img{
+  width:70px;
+}
+
+.profile h3{margin:10px 0 4px}
+.profile p{font-size:12px;opacity:.7}
+
+nav{
+  flex:1;
+  padding:10px;
+}
+
+nav a{
+  display:block;
+  padding:12px 14px;
+  margin:6px 0;
+  border-radius:12px;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,.06);
+  font-size:14px;
+}
+
+nav a:hover{
+  background:var(--green);
+  color:#0f172a;
+}
+
+.settings{
+  padding:12px;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+
+.settings a{
+  display:block;
+  padding:10px;
+  font-size:13px;
+  color:#c7d2fe;
+  text-decoration:none;
+}
+
+.logout{
+  color:#f87171;
+}
