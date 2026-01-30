@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Logistics ID Generated</title>
+<link rel="stylesheet" href="../css/logistics.css">
+</head>
+
+<body class="center success">
+
+<h1>Registration Complete</h1>
+<p>Your Logistics Partner ID</p>
+
+<h2 id="logId"></h2>
+<p>Status: <strong>Pending Verification</strong></p>
+
+<button onclick="location.href='dashboard.html'">
+Go to Dashboard
+</button>
+
+<script>
+document.getElementById("logId").innerText =
+  "LG-ALN-" + Math.floor(100000 + Math.random()*900000);
+</script>
+
+</body>
+</html>
