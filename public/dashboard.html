@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AlinGo Dashboard</title>
-  <link rel="stylesheet" href="css/dashboard.css">
+<meta charset="UTF-8">
+<title>AlinGo Dashboard</title>
+<link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body class="dashboard">
 
-<div class="layout">
-  <aside>
-    <img src="assets/LOGO.JPG">
-    <button onclick="load('digital')">💳 Digital</button>
-    <button onclick="load('ride')">🚗 Ride</button>
-    <button onclick="load('food')">🍔 Food</button>
-    <button onclick="load('shopping')">🛍 Shopping</button>
-    <button onclick="load('tourism')">🧳 Tourism</button>
-    <button onclick="load('logistics')">🚚 Logistics</button>
-  </aside>
+<aside class="side-menu">
+  <h2>AlinGo</h2>
+  <a href="services/ride.html">🚕 Ride</a>
+  <a href="services/food.html">🍔 Food</a>
+  <a href="services/shopping.html">🛒 Shopping</a>
+  <a href="services/travel.html">✈️ Travel</a>
+  <a href="services/logistics.html">📦 Logistics</a>
+  <a href="services/tickets.html">🎟️ Tickets</a>
+  <a href="services/digital.html">💳 Digital</a>
+</aside>
 
-  <main id="content">
-    <h2>Select a service</h2>
-  </main>
-</div>
+<main class="dash-content">
+  <h1>Welcome to AlinGo Dashboard</h1>
+  <p>Select a service from the left menu.</p>
+</main>
 
-<script src="js/dashboard.js"></script>
 </body>
 </html>
