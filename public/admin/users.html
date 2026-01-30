@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Manage Users | AlinGo</title>
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+<header class="bar">
+  <h2>👥 User Management</h2>
+  <a href="dashboard.html">Back</a>
+</header>
+
+<div class="table">
+
+<div class="row head">
+  <span>ID</span>
+  <span>Type</span>
+  <span>Status</span>
+  <span>Action</span>
+</div>
+
+<div class="row">
+  <span>FD-ALN-20411</span>
+  <span>Food Seller</span>
+  <span class="pending">Pending</span>
+  <span>
+    <button onclick="approve()">Approve</button>
+    <button class="block">Block</button>
+  </span>
+</div>
+
+<div class="row">
+  <span>LG-ALN-88201</span>
+  <span>Logistics</span>
+  <span class="active">Active</span>
+  <span>
+    <button class="promote">Promote</button>
+    <button class="block">Block</button>
+  </span>
+</div>
+
+</div>
+
+<script src="../js/admin.js"></script>
+</body>
+</html>
