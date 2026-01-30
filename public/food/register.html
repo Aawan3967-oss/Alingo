@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>Food Partner Registration | AlinGo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/food.css">
+</head>
+
+<body>
+
+<header class="top">
+  <img src="../LOGO.JPG" alt="AlinGo">
+  <h1>Food Partner Registration</h1>
+  <p>ہوٹل، دکاندار یا فوڈ بزنس رجسٹر کریں</p>
+</header>
+
+<form id="foodForm" onsubmit="goToOTP(event)">
+
+  <label>Business / Hotel Name</label>
+  <input required placeholder="ABC Restaurant">
+
+  <label>Owner / Manager Name</label>
+  <input required placeholder="Full Name">
+
+  <label>CNIC</label>
+  <input required placeholder="35202-XXXXXXX-X">
+
+  <label>Mobile Number</label>
+  <input required placeholder="03XXXXXXXXX">
+
+  <label>City</label>
+  <input required placeholder="Karachi / Lahore">
+
+  <label>Area</label>
+  <input required placeholder="Gulshan / DHA">
+
+  <label>Full Address</label>
+  <textarea required></textarea>
+
+  <label>Food Type</label>
+  <select required>
+    <option value="">Select</option>
+    <option>Restaurant</option>
+    <option>Fast Food</option>
+    <option>Bakery</option>
+    <option>Home Kitchen</option>
+  </select>
+
+  <div class="agree">
+    <input type="checkbox" required>
+    <span>I agree to AlinGo Terms & Conditions</span>
+  </div>
+
+  <button type="submit">Proceed to OTP</button>
+
+</form>
+
+<script src="../js/food.js"></script>
+</body>
+</html>
