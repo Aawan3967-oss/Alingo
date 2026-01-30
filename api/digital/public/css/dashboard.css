@@ -1,0 +1,31 @@
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+aside {
+  width: 220px;
+  background: linear-gradient(#1a237e,#2ecc71);
+  padding: 10px;
+}
+
+aside img {
+  width: 80px;
+  display: block;
+  margin: 10px auto;
+}
+
+aside button {
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
