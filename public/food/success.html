@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration Complete | AlinGo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/food.css">
+</head>
+
+<body class="center success">
+
+<h1>🎉 Registration Successful</h1>
+
+<p>Your Food Partner ID</p>
+<h2 id="sellerId"></h2>
+
+<p>Status: <strong>Pending Approval</strong></p>
+
+<button onclick="location.href='../index.html'">
+Back to Home
+</button>
+
+<script>
+  document.getElementById("sellerId").innerText =
+    "FD-ALN-" + Math.floor(100000 + Math.random()*900000);
+</script>
+
+</body>
+</html>
