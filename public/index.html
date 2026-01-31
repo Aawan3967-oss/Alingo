@@ -5,40 +5,59 @@
   <title>AlinGo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FAVICON -->
   <link rel="icon" href="/favicon.ico">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
 
-<!-- SPLASH SCREEN -->
+<!-- ================= SPLASH ================= -->
 <div id="splash">
-  <img src="/LOGO.JPG" alt="AlinGo Logo">
-  <div id="emoji-fall"></div>
+  <div class="splash-border"></div>
+
+  <img src="/assets/logo.png" alt="AlinGo Logo" class="splash-logo">
+
+  <div class="splash-lines">
+    <span></span><span></span><span></span>
+  </div>
 </div>
 
-<!-- HOME -->
-<div id="home" class="hidden">
+<!-- ================= HOME ================= -->
+<div id="home">
 
   <header class="brand">
-    <span class="alin">Alin</span><span class="go">Go</span>
-    <p class="tagline">Everything you need · go<span class="dots">...</span></p>
+    <h1>
+      <span class="alin">Alin</span><span class="go">Go</span>
+    </h1>
+    <p class="tagline">Move smart · Live free</p>
   </header>
 
+  <!-- DISK SYSTEM -->
   <div class="disk-wrapper">
     <div class="outer-disk">
-      <div class="inner-disk">
-        <img src="/LOGO.JPG" alt="Logo">
+
+      <div class="emoji-orbit">
+        <span class="emoji e1">🍔</span>
+        <span class="emoji e2">🚕</span>
+        <span class="emoji e3">✈️</span>
+        <span class="emoji e4">🛒</span>
+        <span class="emoji e5">🎟️</span>
       </div>
+
+      <div class="inner-disk">
+        <img src="/assets/logo.png" alt="Logo">
+      </div>
+
     </div>
+  </div>
+
+  <!-- QUICK ACTIONS -->
+  <div class="actions">
+    <button class="primary">Get Started</button>
+    <button class="secondary">Partner With Us</button>
   </div>
 
 </div>
 
-<!-- JS -->
 <script src="/js/main.js"></script>
 </body>
 </html>
