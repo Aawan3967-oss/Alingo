@@ -1,0 +1,39 @@
+<script>
+const userId = "AL-123456"; // OTP سے آیا ہوا ID
+
+async function loadWallet(){
+  const res = await fetch("/api/wallet", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      action:"fetch",
+      userId
+    })
+  });
+  const data = await res.json();
+
+  document.getElementById("balance").innerText = data.balance;
+
+  let rows = "<tr><th>Order</th><th>Net</th></tr>";
+  data.ledger.forEach(l=>{
+    rows += `<tr><td>${l.orderId}</td><td>${l.net}</td></tr>`;
+  });
+  document.getElementById("orders").innerHTML = rows;
+}
+
+async function withdraw(){
+  const res = await fetch("/api/wallet", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      action:"withdraw",
+      userId
+    })
+  });
+  const data = await res.json();
+  alert(data.message || data.error);
+  loadWallet();
+}
+
+loadWallet();
+</script>
