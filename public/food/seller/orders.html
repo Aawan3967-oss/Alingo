@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seller Orders</title>
+</head>
+<body>
+
+<h2>Orders</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="orders"></tbody>
+</table>
+
+<script>
+const sellerId = "AL-123456";
+
+async function loadOrders() {
+  const res = await fetch("/api/orders", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      action:"fetch",
+      sellerId
+    })
+  });
+  const data = await res.json();
+
+  let html = "";
+  data.orders.forEach(o=>{
+    html += `
+      <tr>
+        <td>${o.orderId}</td>
+        <td>${o.status}</td>
+        <td>
+          <button onclick="next('${o.orderId}','${o.status}')">Next</button>
+        </td>
+      </tr>`;
+  });
+  document.getElementById("orders").innerHTML = html;
+}
+
+async function next(id, status){
+  const flow = ["new","accepted","preparing","dispatched","delivered"];
+  const nextStatus = flow[flow.indexOf(status)+1];
+  if(!nextStatus) return;
+
+  await fetch("/api/orders",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      action:"update",
+      orderId:id,
+      status:nextStatus
+    })
+  });
+
+  loadOrders();
+}
+
+loadOrders();
+</script>
+</body>
+</html>
