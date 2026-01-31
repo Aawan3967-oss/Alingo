@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Track Order | AlinGo Food</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --indigo:#1f256b;
+  --green:#2ecc71;
+  --yellow:#facc15;
+  --gray:#64748b;
+  --bg:#f1f5f9;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui, sans-serif;
+  background:var(--bg);
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,var(--indigo),var(--green));
+  color:#fff;
+  padding:18px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:18px;
+}
+
+/* CONTAINER */
+.container{
+  padding:18px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+/* ORDER INFO */
+.info{
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.info span{
+  color:var(--gray);
+  font-size:12px;
+}
+
+/* PROGRESS */
+.progress{
+  margin:20px 0;
+}
+
+.progress-bar{
+  height:10px;
+  background:#e5e7eb;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--green),#86efac);
+  transition:width 1s ease;
+}
+
+/* STEPS */
+.steps{
+  display:flex;
+  justify-content:space-between;
+  margin-top:14px;
+  font-size:11px;
+}
+
+.step{
+  text-align:center;
+  width:20%;
+  color:var(--gray);
+}
+
+.step.active{
+  color:var(--green);
+  font-weight:600;
+}
+
+/* RIDER */
+.rider{
+  margin-top:18px;
+  background:#f8fafc;
+  padding:12px;
+  border-radius:14px;
+  font-size:13px;
+}
+
+/* BUTTON */
+button{
+  margin-top:16px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:16px;
+  background:var(--green);
+  color:#052e16;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📦 Track Your Order</h1>
+</header>
+
+<div class="container">
+  <div class="card">
+
+    <div class="info">
+      <b>Order ID:</b> FD-4001<br>
+      <span>Status updates in real time</span>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="progress">
+      <div class="progress-bar">
+        <div class="progress-fill" id="bar"></div>
+      </div>
+
+      <div class="steps">
+        <div class="step active">Accepted</div>
+        <div class="step">Preparing</div>
+        <div class="step">Picked</div>
+        <div class="step">On Way</div>
+        <div class="step">Delivered</div>
+      </div>
+    </div>
+
+    <!-- RIDER INFO -->
+    <div class="rider">
+      🛵 <b>Rider:</b> Ali Rider<br>
+      ⏱ <b>ETA:</b> 18 Minutes
+    </div>
+
+    <button onclick="simulate()">Refresh Status</button>
+
+  </div>
+</div>
+
+<script>
+let step = 1;
+
+function simulate(){
+  const steps = document.querySelectorAll(".step");
+  if(step < steps.length){
+    steps[step].classList.add("active");
+    document.getElementById("bar").style.width = (step*25) + "%";
+    step++;
+  }
+}
+</script>
+
+</body>
+</html>
