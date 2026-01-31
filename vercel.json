@@ -1,7 +1,15 @@
 {
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs20.x"
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/index.html",
+      "use": "@vercel/static"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ]
 }
