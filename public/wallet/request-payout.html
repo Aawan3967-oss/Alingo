@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>Request Payout | AlinGo</title>
+<link rel="stylesheet" href="../css/wallet.css">
+</head>
+
+<body>
+
+<header class="bar">
+  <h2>🏦 Payout Request</h2>
+</header>
+
+<form class="card">
+  <label>Amount (Rs)</label>
+  <input type="number" max="50000">
+
+  <label>Payment Method</label>
+  <select>
+    <option>Bank Transfer</option>
+    <option>JazzCash</option>
+    <option>Easypaisa</option>
+  </select>
+
+  <label>Account / Wallet Number</label>
+  <input type="text">
+
+  <p class="note">
+    ⚠️ Cash holding limit is Rs 50,000  
+    Above this amount payout is mandatory
+  </p>
+
+  <button type="button" onclick="submitPayout()">Submit Request</button>
+</form>
+
+</body>
+</html>
