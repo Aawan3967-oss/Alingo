@@ -13,45 +13,52 @@ body {
   background: #fff;
 }
 
-/* SPLASH */
+/* ================= SPLASH ================= */
+
 #splash {
   position: fixed;
   inset: 0;
-  background: #ffffff;
+  background: #fff;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 10;
 }
 
-.splash-box {
-  border: 2px solid transparent;
-  padding: 40px;
+#splash::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 2px solid;
   border-image: linear-gradient(135deg, var(--indigo), var(--green)) 1;
 }
 
-.splash-box img {
-  width: 160px;
+#splash img {
+  width: 180px;
 }
 
-/* HOME */
-#home {
+/* ================= HOME ================= */
+
+.hidden {
   display: none;
+}
+
+#home {
   min-height: 100vh;
   background: linear-gradient(135deg, var(--indigo), var(--green));
-  color: #fff;
+  color: white;
   text-align: center;
   padding-top: 30px;
 }
 
 .brand .alin {
-  font-size: 46px;
+  font-size: 48px;
   font-weight: 800;
   color: #7fffd4;
 }
 
 .brand .go {
-  font-size: 46px;
+  font-size: 48px;
   font-weight: 800;
   color: #c7d2fe;
 }
@@ -61,57 +68,34 @@ body {
   opacity: 0.9;
 }
 
-/* DISKS */
-.disk-wrap {
-  position: relative;
+/* ================= DISKS ================= */
+
+.disk-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.outer-disk {
   width: 260px;
   height: 260px;
-  margin: 30px auto;
-}
-
-.disk {
-  position: absolute;
-  inset: 0;
-  margin: auto;
   border-radius: 50%;
-}
-
-.disk.back {
-  width: 230px;
-  height: 230px;
-  background: radial-gradient(circle at top, #2ecc71, #1f256b);
-}
-
-.disk.front {
-  width: 160px;
-  height: 160px;
-  background: #fff;
+  background: radial-gradient(circle, #2ecc71, #1f256b);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-.disk.front img {
+.inner-disk {
+  width: 170px;
+  height: 170px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-disk img {
   width: 90px;
-}
-
-/* SERVICES */
-.services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  padding: 0 20px;
-}
-
-.service {
-  background: rgba(255,255,255,0.18);
-  border-radius: 18px;
-  padding: 16px 10px;
-  font-size: 22px;
-}
-
-.service span {
-  display: block;
-  font-size: 12px;
-  margin-top: 6px;
 }
