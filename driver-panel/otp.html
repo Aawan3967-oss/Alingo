@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Driver OTP</title>
+<link rel="stylesheet" href="../assets/driver.css">
+</head>
+<body>
+
+<h2>OTP Verification</h2>
+<input id="otp" maxlength="4" placeholder="____">
+<button onclick="verifyDriverOTP()">Verify</button>
+
+<script>
+function verifyDriverOTP(){
+  const o = document.getElementById("otp").value;
+  if(o.length===4){
+    window.location.href="ledger.html";
+  }else{
+    alert("Invalid OTP");
+  }
+}
+</script>
+
+</body>
+</html>
