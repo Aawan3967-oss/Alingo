@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>Terms & Conditions | AlinGo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/food.css">
+<style>
+.lang-switch{
+  text-align:center;
+  margin:10px 0;
+}
+.lang-switch button{
+  margin:0 6px;
+  padding:6px 14px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  background:#fff;
+}
+.tc-box{
+  max-width:760px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  font-size:14px;
+  line-height:1.8;
+}
+.tc-box h2{
+  color:var(--indigo);
+  margin-top:18px;
+}
+.accept{
+  text-align:center;
+  margin:20px 0;
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <img src="../LOGO.JPG" alt="AlinGo">
+  <h1>Terms & Conditions</h1>
+  <p>Food Partners · Sellers · Managers · Drivers</p>
+</header>
+
+<div class="lang-switch">
+  <button onclick="showUr()">اردو</button>
+  <button onclick="showEn()">English</button>
+</div>
+
+<!-- URDU -->
+<div id="urdu" class="tc-box">
+
+<h2>کمیشن پالیسی</h2>
+<p>
+AlinGo پلیٹ فارم پر تمام دکاندار، ہوٹل مینیجر، سیلرز اور ڈرائیورز پر
+<strong>2.5٪</strong> کمیشن لاگو ہوگا۔
+یہ کمیشن ہر کامیاب آرڈر پر خودکار طور پر منہا کیا جائے گا۔
+</p>
+
+<h2>اکاؤنٹ اور شناخت</h2>
+<p>
+ہر پارٹنر کو ایک منفرد <strong>ID نمبر</strong> الاٹ کیا جائے گا۔
+یہ ID کارکردگی، ریٹنگ اور شکایات کی بنیاد پر
+<strong>پرموٹ، معطل یا بلاک</strong> کی جا سکتی ہے۔
+</p>
+
+<h2>ذمہ داریاں</h2>
+<p>
+دکاندار اور ہوٹل مالکان درج ذیل کے ذمہ دار ہوں گے:
+<br>• خوراک کا معیار
+<br>• صفائی اور حفظانِ صحت
+<br>• درست قیمتیں
+<br>• بروقت آرڈر تیاری
+</p>
+
+<h2>ادائیگیاں</h2>
+<p>
+تمام ادائیگیاں ڈیجیٹل والٹ کے ذریعے ہوں گی۔
+AlinGo نقد رقم رکھنے کا ذمہ دار نہیں۔
+</p>
+
+<h2>قانونی تحفظ</h2>
+<p>
+AlinGo ایک ٹیکنالوجی پلیٹ فارم ہے۔
+تمام قانونی، لائسنس اور حکومتی ذمہ داریاں
+دکاندار کی ہوں گی۔
+</p>
+
+</div>
+
+<!-- ENGLISH -->
+<div id="english" class="tc-box" style="display:none">
+
+<h2>Commission Policy</h2>
+<p>
+A standard <strong>2.5%</strong> commission applies to all sellers,
+hotel managers, partners, and drivers on AlinGo.
+Commission is auto-deducted per successful order.
+</p>
+
+<h2>Account & Identity</h2>
+<p>
+Each partner receives a unique <strong>ID</strong>.
+Accounts may be promoted, suspended, or blocked
+based on performance, ratings, or violations.
+</p>
+
+<h2>Responsibilities</h2>
+<p>
+Sellers are responsible for:
+<br>• Food quality
+<br>• Hygiene compliance
+<br>• Accurate pricing
+<br>• Timely preparation
+</p>
+
+<h2>Payments</h2>
+<p>
+All settlements are digital.
+AlinGo does not manage or hold cash.
+</p>
+
+<h2>Legal Notice</h2>
+<p>
+AlinGo acts as a technology facilitator only.
+Partners are responsible for licenses and local compliance.
+</p>
+
+</div>
+
+<div class="accept">
+  <button onclick="acceptTC()">I Accept</button>
+</div>
+
+<script>
+function showUr(){
+  urdu.style.display="block";
+  english.style.display="none";
+}
+function showEn(){
+  urdu.style.display="none";
+  english.style.display="block";
+}
+function acceptTC(){
+  location.href="otp.html";
+}
+</script>
+
+</body>
+</html>
